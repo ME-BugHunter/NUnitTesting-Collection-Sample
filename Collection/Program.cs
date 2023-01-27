@@ -65,6 +65,7 @@ namespace Collections
             Console.WriteLine(nums);
             Console.WriteLine($"Count: {nums.Count}. Capacity: {nums.Capacity}");
             Console.WriteLine();
+       
         }
     }
 }

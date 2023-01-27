@@ -1,21 +1,35 @@
 ﻿using Collections;
+using NUnit.Framework.Constraints;
 using System.Globalization;
 
 namespace Collection.UnitTests
 {
     public class CollectionDataDrivenTests
     {
-       [TestCase("Peter,Maria,Ivan",0,"Peter")]
-       [TestCase("Peter,Maria,Ivan", 1, "Maria")]
-       [TestCase("Peter,Maria,Ivan", 2, "Ivan")]
-       [TestCase("Peter", 0, "Peter")]
+        [TestCase("Peter,Maria,Ivan", 0, "Peter")]
+        [TestCase("Peter,Maria,Ivan", 1, "Maria")]
+        [TestCase("Peter,Maria,Ivan", 2, "Ivan")]
+        [TestCase("Peter", 0, "Peter")]
 
         public void Test_Collection_GetByValidIndex(string data, int index, string expected)
         {
             var coll = new Collection<string>(data.Split(","));
             var actual = coll[index];
 
-            Assert.That(actual, Is.EqualTo(expected));    
+            Assert.That(actual, Is.EqualTo(expected));
+        }
+
+        [TestCase("John,Maria,Stacey", 3)]
+        [TestCase("", 0)]
+        [TestCase("Peter", -1)]
+        [TestCase("John,Maria,Stacey", 1)]
+        public void Test_Collection_GetByInvalidIndexDDT(string data, int index)
+        {
+            var coll = new Collection<string>(data.Split(",",
+                StringSplitOptions.RemoveEmptyEntries));
+
+            Assert.That(() => coll[index],
+                Throws.InstanceOf<ArgumentOutOfRangeException>());
         }
 
     }

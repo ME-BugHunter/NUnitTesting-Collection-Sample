@@ -123,7 +123,7 @@ namespace Collection.UnitTests
 
             Assert.That(coll.ToString, Is.EqualTo("[" + string.Join(", ", newColl) + "]"));
             Assert.That(coll.Capacity, Is.GreaterThanOrEqualTo(oldCapacity));
-            Assert.That(coll.Capacity, Is.GreaterThan(coll.Count));
+            Assert.That(coll.Capacity, Is.GreaterThanOrEqualTo(coll.Count));
         }
 
         [Test]

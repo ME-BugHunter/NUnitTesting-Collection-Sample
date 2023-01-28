@@ -145,7 +145,7 @@ namespace Collection.UnitTests
         }
 
         [Test]
-        public void Test_Collection_InsertWithGrow()
+        public void Test_Collection_InsertAtEnd()
         {
             var coll = new Collection<int>(2, 4, 6, 8);
             coll.InsertAt(4, 10);

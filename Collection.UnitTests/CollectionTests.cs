@@ -272,7 +272,7 @@ namespace Collection.UnitTests
         }
 
         [Test]
-        public void Test_Collection_ToString()
+        public void Test_Collection_ToStringNested()
         {
             var names = new Collection<string>("Maria", "Dinko");
             var nums = new Collection<int>(1, 2, 3);
